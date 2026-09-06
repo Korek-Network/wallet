@@ -26,7 +26,7 @@ jobs:
       matrix:
         include:
           - os: windows-latest
-            command: npm run dist:win
+            command: npm run dist:windows
           - os: ubuntu-latest
             command: npm run dist:linux
     runs-on: ${{ matrix.os }}
