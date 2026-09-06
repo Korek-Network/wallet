@@ -17,7 +17,7 @@ npm run dist:linux
 npm run dist:windows
 ```
 
-GitHub Actions builds Windows `.exe`, Linux `.AppImage` and Linux `.deb` artifacts. Tagged versions beginning with `wallet-v` publish the files to GitHub Releases.
+GitHub Actions tests every update, builds Windows `.exe`, Linux `.AppImage` and Linux `.deb` installers, and publishes them to the [latest testnet wallet release](https://github.com/Korek-Network/wallet/releases/tag/wallet-testnet-latest).
 
 ## Warning
 

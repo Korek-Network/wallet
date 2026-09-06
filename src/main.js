@@ -12,7 +12,7 @@ function createWindow(){
   const win=new BrowserWindow({width:1040,height:720,minWidth:820,minHeight:620,backgroundColor:"#07110f",title:"KOREK Wallet",
     webPreferences:{preload:join(directory,"preload.cjs"),contextIsolation:true,nodeIntegration:false,sandbox:true}});
   win.removeMenu(); win.loadFile(join(directory,"renderer","index.html"));
-  win.webContents.setWindowOpenHandler(({url})=>{ if(url.startsWith("https://github.com/Korek-Network/korek")) shell.openExternal(url); return {action:"deny"}; });
+  win.webContents.setWindowOpenHandler(({url})=>{ if(url.startsWith("https://github.com/Korek-Network/wallet")) shell.openExternal(url); return {action:"deny"}; });
 }
 
 ipcMain.handle("wallet:create",async(_event,password)=>{
