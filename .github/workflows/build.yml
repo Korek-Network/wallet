@@ -1,41 +1,32 @@
 name: Build KOREK Wallet
-
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: write
-
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
+        with: { node-version: 22, cache: npm }
       - run: npm ci
       - run: npm test
-
   build:
     needs: test
     strategy:
       matrix:
         include:
-          - os: windows-latest
-            command: npm run dist:windows
-          - os: ubuntu-latest
-            command: npm run dist:linux
+          - { os: windows-latest, command: "npm run dist:windows" }
+          - { os: ubuntu-latest, command: "npm run dist:linux" }
+          - { os: macos-latest, command: "npm run dist:mac" }
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
+        with: { node-version: 22, cache: npm }
       - run: npm ci
       - run: ${{ matrix.command }}
       - uses: actions/upload-artifact@v4
@@ -45,23 +36,24 @@ jobs:
             dist/*.exe
             dist/*.AppImage
             dist/*.deb
+            dist/*.dmg
+            dist/*.zip
           if-no-files-found: error
-
   release:
     needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
-        with:
-          path: artifacts
-          merge-multiple: true
+        with: { path: artifacts, merge-multiple: true }
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: wallet-testnet-latest
-          name: KOREK Wallet Testnet
+          name: KOREK Wallet Planck Testnet
           prerelease: true
           make_latest: false
           files: |
             artifacts/*.exe
             artifacts/*.AppImage
             artifacts/*.deb
+            artifacts/*.dmg
+            artifacts/*.zip

@@ -1,59 +1,6 @@
 {
-  "name": "korek-wallet",
-  "version": "0.1.3",
-  "description": "Official KOREK testnet desktop wallet",
-  "author": {
-    "name": "KOREK Network",
-    "email": "176841138+Korek-Network@users.noreply.github.com"
-  },
-  "homepage": "https://github.com/Korek-Network/wallet",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Korek-Network/wallet.git"
-  },
-  "license": "Apache-2.0",
-  "private": true,
-  "type": "module",
-  "main": "src/main.js",
-  "scripts": {
-    "start": "electron .",
-    "test": "node --test",
-    "dist:linux": "electron-builder --linux AppImage deb --publish never",
-    "dist:windows": "electron-builder --win nsis --publish never"
-  },
-  "devDependencies": {
-    "electron": "^38.0.0",
-    "electron-builder": "^26.0.12"
-  },
-  "build": {
-    "appId": "network.korek.wallet",
-    "productName": "KOREK Wallet",
-    "artifactName": "KOREK-Wallet-${version}-${os}-${arch}.${ext}",
-    "directories": {
-      "output": "dist"
-    },
-    "files": [
-      "src/**/*",
-      "package.json"
-    ],
-    "linux": {
-      "target": [
-        "AppImage",
-        "deb"
-      ],
-      "category": "Finance",
-      "synopsis": "KOREK testnet desktop wallet",
-      "maintainer": "KOREK Network <176841138+Korek-Network@users.noreply.github.com>"
-    },
-    "win": {
-      "target": [
-        "nsis"
-      ]
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true,
-      "createDesktopShortcut": true
-    }
-  }
+  "name":"korek-wallet","version":"0.2.0","description":"Official KOREK Planck testnet desktop wallet","author":{"name":"KOREK Network","email":"176841138+Korek-Network@users.noreply.github.com"},"homepage":"https://github.com/Korek-Network/wallet","repository":{"type":"git","url":"https://github.com/Korek-Network/wallet.git"},"license":"Apache-2.0","private":true,"type":"module","main":"src/main.js",
+  "scripts":{"start":"electron .","test":"node --test","dist:linux":"electron-builder --linux AppImage deb --publish never","dist:windows":"electron-builder --win nsis --publish never","dist:mac":"electron-builder --mac dmg zip --publish never"},
+  "devDependencies":{"electron":"^38.0.0","electron-builder":"^26.0.12"},
+  "build":{"appId":"network.korek.wallet","productName":"KOREK Wallet","artifactName":"KOREK-Wallet-${version}-${os}-${arch}.${ext}","directories":{"output":"dist"},"files":["src/**/*","package.json"],"linux":{"target":["AppImage","deb"],"category":"Finance","synopsis":"KOREK Planck testnet desktop wallet","maintainer":"KOREK Network <176841138+Korek-Network@users.noreply.github.com>"},"win":{"target":["nsis"]},"mac":{"target":["dmg","zip"],"category":"public.app-category.finance","identity":null},"nsis":{"oneClick":false,"allowToChangeInstallationDirectory":true,"createDesktopShortcut":true}}
 }
