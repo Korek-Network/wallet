@@ -1,9 +1,10 @@
 # KOREK Wallet — Planck Testnet
 
-Official cross-platform desktop wallet for the KOREK Planck testnet. Version 0.2 manages a transparent account and a separate wormhole mining-reward account from one encrypted wallet file and one 24-word recovery phrase.
+Official cross-platform desktop wallet for the KOREK Planck testnet. Version 0.2.1 manages a transparent account and a separate wormhole mining-reward account from one encrypted wallet file and one 24-word recovery phrase.
 
 ## Features
 
+- Mandatory first-run backup screen showing the complete 24-word recovery phrase
 - KOREK 24-word recovery phrase with deterministic account recovery
 - Separate `transparent/0` and `wormhole/0` testnet derivation paths
 - Spend mining rewards directly from the wormhole balance
