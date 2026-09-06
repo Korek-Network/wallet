@@ -20,7 +20,7 @@
     "test": "node --test",
     "dist:linux": "electron-builder --linux AppImage deb --publish never",
     "dist:windows": "electron-builder --win nsis --publish never",
-    "dist:mac": "electron-builder --mac dmg zip --x64 --arm64"
+    "dist:mac": "electron-builder --mac dmg zip --x64 --arm64 --publish never"
   },
   "devDependencies": {
     "electron": "^38.0.0",
