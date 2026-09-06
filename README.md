@@ -1,6 +1,6 @@
 # KOREK Wallet — Planck Testnet
 
-Official cross-platform desktop wallet for the KOREK Planck testnet. Version 0.2.1 manages a transparent account and a separate wormhole mining-reward account from one encrypted wallet file and one 24-word recovery phrase.
+Official cross-platform desktop wallet for the KOREK Planck testnet. Version 0.2.2 manages a transparent account and a separate wormhole mining-reward account from one encrypted wallet file and one 24-word recovery phrase.
 
 ## Features
 
@@ -28,9 +28,11 @@ npm start
 
 Node.js 22 or newer is required.
 
+The wallet uses `https://rpc.planck.korek.network` by default for status, balances, faucet requests, and signed transaction submission. Advanced users can replace it with a local or trusted Planck node URL.
+
 ## Mining rewards
 
-Create a v0.2 wallet and back up the displayed 24 words offline. In **Mining rewards**, copy the inner hash and provide it to your own Planck miner:
+Create a v0.2.2 wallet and back up the displayed 24 words offline. In **Mining rewards**, copy the inner hash and provide it to your own Planck miner:
 
 ```bash
 npm run mine -- --rewards-inner-hash YOUR_64_CHARACTER_INNER_HASH
