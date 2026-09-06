@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { accountFor,createEncryptedWallet,signTransfer,unlockWallet } from "./wallet-core.js";
 
 const directory=fileURLToPath(new URL(".",import.meta.url));let activeWallet=null;
-const nodeUrl=(value="http://127.0.0.1:8365")=>{const url=new URL(value);if(!["http:","https:"].includes(url.protocol))throw new Error("Node URL must use HTTP or HTTPS");return url.origin};
+const nodeUrl=(value="https://rpc.planck.korek.network")=>{const url=new URL(value);if(!["http:","https:"].includes(url.protocol))throw new Error("Node URL must use HTTP or HTTPS");return url.origin};
 async function api(base,path,options){const response=await fetch(`${nodeUrl(base)}${path}`,{...options,signal:AbortSignal.timeout(8000)}),result=await response.json();if(!response.ok)throw new Error(result.error||`Node error ${response.status}`);return result}
 function summary(wallet,recoveryPhrase){const transparent=accountFor(wallet,"transparent-v1"),wormhole=wallet.legacy?null:wallet.wormhole;return{address:transparent.address,wormholeAddress:wormhole?.address||null,innerHash:wormhole?.innerHash||null,legacy:Boolean(wallet.legacy),recoveryPhrase}}
 async function saveNew(password,mnemonic){const made=createEncryptedWallet(password,mnemonic),selected=await dialog.showSaveDialog({title:"Save encrypted KOREK wallet",defaultPath:`korek-wallet-${made.file.address.slice(-8)}.krkwallet`,filters:[{name:"KOREK Wallet",extensions:["krkwallet"]}]});if(selected.canceled)return{canceled:true};await writeFile(selected.filePath,JSON.stringify(made.file,null,2),{mode:0o600,flag:"wx"});activeWallet=made.wallet;return{...summary(activeWallet,made.recoveryPhrase),path:selected.filePath}}
